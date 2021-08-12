@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 const ResourceManifestPlugin = require('webpack-fivem-manifest');
 
 module.exports = require('./webpack.common')({
@@ -11,6 +12,7 @@ module.exports = require('./webpack.common')({
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html',
+      chunks : ['main'],
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -26,6 +28,9 @@ module.exports = require('./webpack.common')({
       inject: true,
     }),
     new ResourceManifestPlugin(),
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 1
+    }),
   ],
 
   performance: {

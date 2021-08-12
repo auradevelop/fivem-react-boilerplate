@@ -33,7 +33,16 @@ module.exports = options => ({
       },
       {
         test: /\.(eot|otf|ttf|woff|woff2)$/,
-        use: 'file-loader',
+        use: [
+          {
+            loader:'file-loader',
+            options: {
+              outputPath: 'fonts',
+              publicPath: './fonts',
+              name: '[name].[ext]',
+            }
+          }
+        ]
       },
       {
         test: /\.svg$/,
@@ -44,6 +53,9 @@ module.exports = options => ({
               // Inline files smaller than 10 kB
               limit: 10 * 1024,
               noquotes: true,
+              outputPath: 'images',
+              publicPath: './images',
+              name: '[name].[ext]',
             },
           },
         ],
@@ -56,6 +68,9 @@ module.exports = options => ({
             options: {
               // Inline files smaller than 10 kB
               limit: 10 * 1024,
+              outputPath: 'images',
+              publicPath: './images',
+              name: '[name].[ext]',
             },
           },
           {
@@ -87,11 +102,14 @@ module.exports = options => ({
         use: 'html-loader',
       },
       {
-        test: /\.(mp4|webm)$/,
+        test: /\.(mp4|webm|mp3)$/,
         use: {
           loader: 'url-loader',
           options: {
             limit: 10000,
+            outputPath: 'sounds',
+            publicPath: './sounds',
+            name: '[name].[ext]',
           },
         },
       },
@@ -122,6 +140,6 @@ module.exports = options => ({
   ]),
   resolve: {
     modules: ['src', 'node_modules'],
-    extensions: ['.js', '.jsx', '.react.js'],
+    extensions: ['.js', '.jsx', '.json', '.react.js'],
   },
 });

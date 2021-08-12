@@ -13,7 +13,7 @@ const H1 = styled('h1')`
 
 const App = ({ hidden }) => (
   <div>
-    <H1 hidden={hidden}>Hello world</H1>
+    <H1 hidden={process.env.NODE_ENV === 'development' ? !hidden : hidden}>Hello world</H1>
     <GlobalStyle />
   </div>
 );
