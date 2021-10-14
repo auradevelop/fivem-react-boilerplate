@@ -1,15 +1,12 @@
-import '@babel/polyfill';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import App from 'containers/App';
+import App from './containers';
 
-import WindowListener from 'containers/WindowListener';
+import WindowListener from './containers/WindowListener';
 
 import configureStore from './configureStore';
-import CharacterSelect from './containers/CharacterSelect';
 
 const initialState = {};
 const store = configureStore(initialState);
@@ -19,10 +16,7 @@ const render = () => {
   ReactDOM.render(
     <Provider store={store}>
       <WindowListener>
-        <>
-          <App />
-          <CharacterSelect />
-        </>
+        <App />
       </WindowListener>
     </Provider>,
     MOUNT_NODE,
@@ -30,7 +24,7 @@ const render = () => {
 };
 
 if (module.hot) {
-  module.hot.accept(['containers/App'], () => {
+  module.hot.accept(['./containers/'], () => {
     ReactDOM.unmountComponentAtNode(MOUNT_NODE);
     render();
   });

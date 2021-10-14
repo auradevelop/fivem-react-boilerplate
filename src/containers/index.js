@@ -3,17 +3,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
-
-import GlobalStyle from '../../globalStyles';
-
-const H1 = styled('h1')`
-  font-family: Pricedown;
-  visibility: ${props => props.hidden};
-`;
+import GlobalStyle from '../globalStyles';
 
 const App = ({ hidden }) => (
   <div>
-    <H1 hidden={process.env.NODE_ENV === 'development' ? !hidden : hidden}>Hello world</H1>
+    <h1 hidden={process.env.NODE_ENV === 'development' ? !hidden : hidden}>Hello world</h1>
     <GlobalStyle />
   </div>
 );

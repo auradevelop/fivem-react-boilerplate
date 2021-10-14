@@ -5,7 +5,7 @@ export default {
     /// #endif
 
     /* eslint-disable no-unreachable */
-    return fetch(`http://resource/${event}`, {
+    return fetch(`http://aura_phone/${event}`, {
       method: 'post',
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
