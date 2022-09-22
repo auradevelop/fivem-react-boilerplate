@@ -9,7 +9,7 @@ module.exports = {
       webpackConfig.resolve.plugins.splice(scopePluginIndex, 1);
       // Because CEF has issues with loading source maps properly atm,
       // lets use the best we can get in line with `eval-source-map`
-      if (webpackConfig.mode === 'development' && process.env.IN_GAME_DEV) {
+      if (webpackConfig.mode === 'development' || process.env.IN_GAME_DEV) {
         webpackConfig.devtool = 'eval-source-map'
         webpackConfig.output.path = path.resolve(process.cwd(), 'html')
       }
