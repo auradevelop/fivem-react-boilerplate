@@ -16,11 +16,6 @@
     "lint:staged": "lint-staged",
     "prettify": "prettier --write **/*.js"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app/jest"
-    ]
-  },
   "lint-staged": {
     "*.js": [
       "npm run lint:fix",
